@@ -45,7 +45,8 @@ def inject_pie():
         root.insert(len(root)-1, new_g)
         
         # Write the modified SVG
-        tree.write(svg_path)
+        new_svg_path = 'profile-3d-contrib/profile-dashboard-injected.svg'
+        tree.write(new_svg_path)
         print("Successfully injected 3D pie chart into the plugin dashboard!")
         
     except Exception as e:
