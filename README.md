@@ -32,11 +32,11 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
   <img src="https://img.shields.io/badge/Microsoft_Certified_Azure_Data_Fundamentals-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure Data Fundamentals" />
 </div>
 
-### 🌅 Minhas Contribuições (3D GTA VI Theme)
+### 🌅 Minhas Contribuições (Padrão GitHub + GTA VI Colors)
 
 <div align="center">
-  <!-- A imagem será gerada automaticamente com um degradê de Pôr do Sol de Miami! -->
-  <img src="profile-3d-contrib/profile-customize.svg" alt="3D Github Commits" width="800">
+  <!-- A grade padrão de commits do GitHub com as cores do pôr do sol de Vice City e a famosa cobrinha! -->
+  <img src="github-snake.svg" alt="GitHub Commits" width="800">
 </div>
 
 ---
