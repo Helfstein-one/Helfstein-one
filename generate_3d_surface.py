@@ -13,11 +13,10 @@ TOKEN = os.environ.get("GITHUB_TOKEN")
 COLORS = ["#2b1b54", "#ff007c", "#ff7b00", "#ffea00", "#00e5ff"]
 BACKGROUND_COLOR = "#0d1117"
 
-def fetch_contributions():
+def fetch_languages():
     if not TOKEN:
-        # Fallback to random data if running locally without token
         print("No GITHUB_TOKEN found, using mock data")
-        return np.random.randint(0, 10, size=(7, 52))
+        return ["Python", "SQL", "HTML", "Jupyter", "Shell"], [50, 30, 15, 10, 5]
 
     headers = {
         "Authorization": f"Bearer {TOKEN}",
@@ -27,12 +26,14 @@ def fetch_contributions():
     query = """
     query($userName:String!) {
       user(login: $userName){
-        contributionsCollection {
-          contributionCalendar {
-            totalContributions
-            weeks {
-              contributionDays {
-                contributionCount
+        repositories(ownerAffiliations: OWNER, isFork: false, first: 100) {
+          nodes {
+            languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+              edges {
+                size
+                node {
+                  name
+                }
               }
             }
           }
@@ -50,30 +51,41 @@ def fetch_contributions():
     
     if response.status_code != 200:
         print(f"Error fetching data: {response.status_code}")
-        return np.random.randint(0, 10, size=(7, 52))
+        return ["Python", "SQL", "HTML", "Jupyter", "Shell"], [50, 30, 15, 10, 5]
         
     data = response.json()
-    weeks = data['data']['user']['contributionsCollection']['contributionCalendar']['weeks']
+    repos = data['data']['user']['repositories']['nodes']
     
-    matrix = np.zeros((7, 52))
-    
-    for w, week in enumerate(weeks[-52:]): # Take last 52 weeks
-        for day in week['contributionDays']:
-            # weekday mapping: 0 = Sunday, 6 = Saturday
-            weekday = day.get('weekday', 0)
-            # Some versions of API don't return weekday directly, might need to infer
-            # The order in the array is usually Sun -> Sat
-            matrix[day.get('weekday', week['contributionDays'].index(day)), w] = day['contributionCount']
+    lang_stats = {}
+    for repo in repos:
+        for edge in repo['languages']['edges']:
+            lang_name = edge['node']['name']
+            size = edge['size']
+            lang_stats[lang_name] = lang_stats.get(lang_name, 0) + size
             
-    return matrix
-
-def generate_surface_plot(matrix):
-    # Smooth the data to create a continuous surface rather than sharp blocks
-    # sigma controls the smoothness
-    smoothed_matrix = gaussian_filter(matrix, sigma=1.5)
+    if not lang_stats:
+        return ["Python", "SQL", "HTML", "Jupyter", "Shell"], [50, 30, 15, 10, 5]
+        
+    # Sort by size descending and take top 7 languages
+    sorted_langs = sorted(lang_stats.items(), key=lambda x: x[1], reverse=True)[:7]
+    labels = [x[0] for x in sorted_langs]
+    sizes = [x[1] for x in sorted_langs]
     
-    # Scale up for better visualization if values are low
-    smoothed_matrix = smoothed_matrix * 10
+    # Normalize sizes to avoid massive peaks
+    max_size = max(sizes) if sizes else 1
+    sizes = [(s / max_size) * 100 for s in sizes]
+    
+    return labels, sizes
+
+def generate_surface_plot(labels, sizes):
+    # Convert 1D data to a 2D surface (simulating depth)
+    z_1d = np.array(sizes)
+    # Create a 2D matrix where the Y axis is just depth (10 rows)
+    matrix = np.tile(z_1d, (10, 1))
+    
+    # Smooth the surface so it looks like rolling hills instead of sharp blocks
+    # We apply a gentle blur to make it a continuous mathematical surface
+    smoothed_matrix = gaussian_filter(matrix, sigma=(0.5, 0.8))
     
     # Create meshgrid
     X, Y = np.meshgrid(np.arange(smoothed_matrix.shape[1]), np.arange(smoothed_matrix.shape[0]))
@@ -98,32 +110,36 @@ def generate_surface_plot(matrix):
     ax.yaxis.set_pane_color((0.0, 0.0, 0.0, 0.0))
     ax.zaxis.set_pane_color((0.0, 0.0, 0.0, 0.0))
     
-    # Enable and style grid lines (quadrados de referência)
+    # Enable and style grid lines (quadrados de referência solicitados pelo usuário)
     ax.grid(True)
-    ax.xaxis._axinfo["grid"].update({"color": "#ffffff", "linewidth": 0.2, "alpha": 0.3})
-    ax.yaxis._axinfo["grid"].update({"color": "#ffffff", "linewidth": 0.2, "alpha": 0.3})
-    ax.zaxis._axinfo["grid"].update({"color": "#ffffff", "linewidth": 0.2, "alpha": 0.3})
+    ax.xaxis._axinfo["grid"].update({"color": "#ffffff", "linewidth": 0.3, "alpha": 0.4})
+    ax.yaxis._axinfo["grid"].update({"color": "#ffffff", "linewidth": 0.3, "alpha": 0.4})
+    ax.zaxis._axinfo["grid"].update({"color": "#ffffff", "linewidth": 0.3, "alpha": 0.4})
     
     # Make axes lines slightly visible
-    ax.xaxis.line.set_color((1.0, 1.0, 1.0, 0.2))
-    ax.yaxis.line.set_color((1.0, 1.0, 1.0, 0.2))
-    ax.zaxis.line.set_color((1.0, 1.0, 1.0, 0.2))
+    ax.xaxis.line.set_color((1.0, 1.0, 1.0, 0.3))
+    ax.yaxis.line.set_color((1.0, 1.0, 1.0, 0.3))
+    ax.zaxis.line.set_color((1.0, 1.0, 1.0, 0.3))
     
-    # Configure tick labels
-    ax.tick_params(axis='x', colors='#8b949e', labelsize=8)
-    ax.tick_params(axis='y', colors='#8b949e', labelsize=8)
+    # Configure tick labels for X axis (Technologies)
+    ax.set_xticks(np.arange(len(labels)))
+    ax.set_xticklabels(labels, color='#00e5ff', fontsize=10, rotation=15)
+    
+    # Hide Y ticks (Depth is just visual)
+    ax.set_yticks([])
+    
+    # Configure Z ticks (Usage intensity)
     ax.tick_params(axis='z', colors='#8b949e', labelsize=8)
     
     # Add axis labels
-    ax.set_xlabel('Semanas', color='#00e5ff', fontsize=10, labelpad=10)
-    ax.set_ylabel('Dias', color='#00e5ff', fontsize=10, labelpad=10)
-    ax.set_zlabel('Intensidade', color='#00e5ff', fontsize=10, labelpad=10)
+    ax.set_xlabel('\nTecnologias', color='#ffea00', fontsize=12, labelpad=20)
+    ax.set_zlabel('Intensidade / Uso', color='#ffea00', fontsize=12, labelpad=10)
     
     # Adjust view angle for a nice isometric feel
-    ax.view_init(elev=35, azim=-45)
+    ax.view_init(elev=25, azim=-55)
     
     # Add a cool title
-    plt.title("GitHub Contributions Surface", color="#ff007c", fontdict={'fontsize': 18, 'fontweight': 'bold'}, pad=20)
+    plt.title("Habilidades & Tecnologias (Superfície 3D)", color="#ff007c", fontdict={'fontsize': 18, 'fontweight': 'bold'}, pad=20)
     
     # Save the figure
     plt.savefig('3d_surface_graph.png', 
@@ -134,7 +150,7 @@ def generate_surface_plot(matrix):
     print("Successfully generated 3d_surface_graph.png")
 
 if __name__ == "__main__":
-    print("Fetching data...")
-    data_matrix = fetch_contributions()
-    print("Generating 3D surface plot...")
-    generate_surface_plot(data_matrix)
+    print("Fetching language data...")
+    labels, sizes = fetch_languages()
+    print("Generating 3D skills surface plot...")
+    generate_surface_plot(labels, sizes)
