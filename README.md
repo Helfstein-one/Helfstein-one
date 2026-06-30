@@ -25,6 +25,13 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
   <img src="https://img.shields.io/badge/Airflow-0d1117?style=for-the-badge&logo=apacheairflow&logoColor=00e5ff&color=ff007c" alt="Airflow" />
 </div>
 
+<br>
+
+<div align="center">
+  <!-- Gráfico de Skills (Linguagens Baseadas em Commits) -->
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Helfstein-one&layout=compact&bg_color=0d1117&title_color=ff007c&text_color=00e5ff&border_color=2b1b54&border_radius=15" alt="Top Languages" width="400" />
+</div>
+
 ### 📜 Certificações
 
 <div align="center">
@@ -32,11 +39,18 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
   <img src="https://img.shields.io/badge/Microsoft_Certified_Azure_Data_Fundamentals-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure Data Fundamentals" />
 </div>
 
-### 🌅 Minhas Contribuições (Padrão GitHub + GTA VI Colors)
+### 🌅 Minhas Contribuições
 
 <div align="center">
   <!-- A grade padrão de commits do GitHub com as cores do pôr do sol de Vice City e a famosa cobrinha! -->
   <img src="github-snake.svg" alt="GitHub Commits" width="800">
+</div>
+
+### 🌆 Dashboard Analítico 3D (Custom GTA VI Theme)
+
+<div align="center">
+  <!-- O Dashboard completo (que inclui Radar Chart, Pie Chart e os Commits 3D no canto) gerado pela Action! -->
+  <img src="profile-3d-contrib/profile-customize.svg" alt="3D Dashboard" width="800">
 </div>
 
 ---
