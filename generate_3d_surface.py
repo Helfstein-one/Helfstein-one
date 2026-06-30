@@ -93,23 +93,31 @@ def generate_surface_plot(matrix):
                            antialiased=True,
                            alpha=0.9)
                            
-    # Customize axes to match the dark theme and hide the messy labels
+    # Customize axes to match the dark theme while keeping grid lines visible
     ax.xaxis.set_pane_color((0.0, 0.0, 0.0, 0.0))
     ax.yaxis.set_pane_color((0.0, 0.0, 0.0, 0.0))
     ax.zaxis.set_pane_color((0.0, 0.0, 0.0, 0.0))
     
-    # Hide grid lines
-    ax.grid(False)
+    # Enable and style grid lines (quadrados de referência)
+    ax.grid(True)
+    ax.xaxis._axinfo["grid"].update({"color": "#ffffff", "linewidth": 0.2, "alpha": 0.3})
+    ax.yaxis._axinfo["grid"].update({"color": "#ffffff", "linewidth": 0.2, "alpha": 0.3})
+    ax.zaxis._axinfo["grid"].update({"color": "#ffffff", "linewidth": 0.2, "alpha": 0.3})
     
-    # Make axes transparent
-    ax.xaxis.line.set_color((1.0, 1.0, 1.0, 0.0))
-    ax.yaxis.line.set_color((1.0, 1.0, 1.0, 0.0))
-    ax.zaxis.line.set_color((1.0, 1.0, 1.0, 0.0))
+    # Make axes lines slightly visible
+    ax.xaxis.line.set_color((1.0, 1.0, 1.0, 0.2))
+    ax.yaxis.line.set_color((1.0, 1.0, 1.0, 0.2))
+    ax.zaxis.line.set_color((1.0, 1.0, 1.0, 0.2))
     
-    # Remove ticks
-    ax.set_xticks([])
-    ax.set_yticks([])
-    ax.set_zticks([])
+    # Configure tick labels
+    ax.tick_params(axis='x', colors='#8b949e', labelsize=8)
+    ax.tick_params(axis='y', colors='#8b949e', labelsize=8)
+    ax.tick_params(axis='z', colors='#8b949e', labelsize=8)
+    
+    # Add axis labels
+    ax.set_xlabel('Semanas', color='#00e5ff', fontsize=10, labelpad=10)
+    ax.set_ylabel('Dias', color='#00e5ff', fontsize=10, labelpad=10)
+    ax.set_zlabel('Intensidade', color='#00e5ff', fontsize=10, labelpad=10)
     
     # Adjust view angle for a nice isometric feel
     ax.view_init(elev=35, azim=-45)
