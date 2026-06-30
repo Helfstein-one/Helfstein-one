@@ -1,6 +1,6 @@
-<!-- Header Personalizado GTA VI -->
+<!-- Header Animado GTA VI / Synthwave -->
 <div align="center">
-  <img src="header.png" alt="Miami Sunset GTA VI Vibe" width="100%" style="border-radius: 15px;"/>
+  <img src="https://i.pinimg.com/originals/28/df/6c/28df6c5b4e782ecbc581692ec06f7173.gif" alt="Miami Sunset GTA VI Vibe" width="100%" style="border-radius: 15px;"/>
 </div>
 
 <br>
@@ -46,11 +46,11 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
   <img src="github-snake.svg" alt="GitHub Commits" width="800">
 </div>
 
-### 🌆 Dashboard Analítico 3D (Custom GTA VI Theme)
+### 🌆 Gráfico de Commits 3D (Night Rainbow / Sunset Vibe)
 
 <div align="center">
-  <!-- O Dashboard completo (que inclui Radar Chart, Pie Chart e os Commits 3D no canto) gerado pela Action! -->
-  <img src="profile-3d-contrib/profile-customize.svg" alt="3D Dashboard" width="800">
+  <!-- O Gráfico 3D nativo do plugin com cores lindas de Sunset/Neon! -->
+  <img src="profile-3d-contrib/profile-night-rainbow.svg" alt="3D Profile" width="800">
 </div>
 
 ---
