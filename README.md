@@ -1,6 +1,6 @@
-<!-- Header Animado GTA VI / Synthwave -->
+<!-- Header Personalizado GTA VI -->
 <div align="center">
-  <img src="https://i.pinimg.com/originals/28/df/6c/28df6c5b4e782ecbc581692ec06f7173.gif" alt="Miami Sunset GTA VI Vibe" width="100%" style="border-radius: 15px;"/>
+  <img src="header.png" alt="Miami Sunset GTA VI Vibe" width="100%" style="border-radius: 15px;"/>
 </div>
 
 <br>
