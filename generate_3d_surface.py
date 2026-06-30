@@ -135,8 +135,8 @@ def generate_surface_plot(labels, sizes):
     ax.set_xlabel('\nTecnologias', color='#ffea00', fontsize=12, labelpad=20)
     ax.set_zlabel('Intensidade / Uso', color='#ffea00', fontsize=12, labelpad=10)
     
-    # Adjust view angle for a nice isometric feel
-    ax.view_init(elev=25, azim=-55)
+    # Adjust view angle for a nice isometric feel (rotated to put X-axis on the right)
+    ax.view_init(elev=25, azim=45)
     
     # Add a cool title
     plt.title("Habilidades & Tecnologias (Superfície 3D)", color="#ff007c", fontdict={'fontsize': 18, 'fontweight': 'bold'}, pad=20)

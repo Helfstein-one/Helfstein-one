@@ -40,18 +40,11 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
   <img src="github-snake.svg" alt="GitHub Commits" width="800">
 </div>
 
-### 🌆 Gráfico de Commits 3D (Night Rainbow)
+### 🌆 Gráfico de Commits 3D & Habilidades
 
 <div align="center">
-  <!-- O Gráfico 3D nativo do plugin com cores lindas de Sunset/Neon! -->
-  <img src="profile-3d-contrib/profile-night-rainbow.svg" alt="3D Profile" width="800">
-</div>
-
-### 📈 Mapa de Atividade em Superfície 3D
-
-<div align="center">
-  <!-- O Gráfico 3D contínuo gerado pelo script Python de Data Engineering! -->
-  <img src="3d_surface_graph.png" alt="3D Surface Profile" width="800">
+  <!-- O Dashboard unificado: Grade 3D nativa + Radar + Gráfico de Superfície 3D Python customizado! -->
+  <img src="profile-3d-contrib/profile-night-rainbow.svg" alt="3D Profile Dashboard" width="800">
 </div>
 
 ---

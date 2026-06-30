@@ -1,8 +1,8 @@
-name: Generate 3D Surface Graph
+name: Generate Profile Dashboard
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Runs daily at midnight
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -13,6 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      - name: Generate 3D Grid & Dashboard (Plugin)
+        uses: yoshi389111/github-profile-3d-contrib@0.7.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+          
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -23,15 +29,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests numpy scipy matplotlib
           
-      - name: Generate Surface Graph
+      - name: Generate Custom 3D Surface Graph
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python generate_3d_surface.py
+        
+      - name: Inject Surface into Dashboard
+        run: python inject_surface.py
         
       - name: Commit & Push
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
+          git add profile-3d-contrib
           git add 3d_surface_graph.png
-          git commit -m "data: generate 3D surface plot" || exit 0
+          git commit -m "data: generate unified 3D profile dashboard" || exit 0
           git push
