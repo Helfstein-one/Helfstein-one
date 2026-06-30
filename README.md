@@ -25,12 +25,6 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
   <img src="https://img.shields.io/badge/Airflow-0d1117?style=for-the-badge&logo=apacheairflow&logoColor=00e5ff&color=ff007c" alt="Airflow" />
 </div>
 
-<br>
-
-<div align="center">
-  <!-- Gráfico de Skills (Linguagens Baseadas em Commits) -->
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Helfstein-one&layout=compact&bg_color=0d1117&title_color=ff007c&text_color=00e5ff&border_color=2b1b54&border_radius=15" alt="Top Languages" width="400" />
-</div>
 
 ### 📜 Certificações
 
@@ -46,7 +40,7 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
   <img src="github-snake.svg" alt="GitHub Commits" width="800">
 </div>
 
-### 🌆 Gráfico de Commits 3D (Night Rainbow / Sunset Vibe)
+### 🌆 Gráfico de Commits
 
 <div align="center">
   <!-- O Gráfico 3D nativo do plugin com cores lindas de Sunset/Neon! -->
