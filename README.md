@@ -40,11 +40,26 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
   <img src="github-snake.svg" alt="GitHub Commits" width="800">
 </div>
 
-### 🌆 Gráfico de Commits 3D & Habilidades
+### 🌆 Gráfico de Commits 3D (Night Rainbow)
 
 <div align="center">
-  <!-- O Dashboard unificado: Grade 3D nativa + Radar + Gráfico de Superfície 3D Python customizado! -->
-  <img src="profile-3d-contrib/profile-night-rainbow.svg?v=2" alt="3D Profile Dashboard" width="800">
+  <!-- O Dashboard completo do plugin: Grade 3D, Radar e Gráfico de Pizza (Skills) -->
+  <img src="profile-3d-contrib/profile-night-rainbow.svg?v=3" alt="3D Profile Dashboard" width="800">
+</div>
+
+### 📈 Mapas de Atividade em Superfície 3D
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>Superfície de Tecnologias</b></td>
+      <td align="center"><b>Superfície de Intensidade (Commits)</b></td>
+    </tr>
+    <tr>
+      <td><img src="3d_surface_skills.png?v=3" alt="3D Surface Skills" width="400"></td>
+      <td><img src="3d_surface_commits.png?v=3" alt="3D Surface Commits" width="400"></td>
+    </tr>
+  </table>
 </div>
 
 ---

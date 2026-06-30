@@ -142,12 +142,12 @@ def generate_surface_plot(labels, sizes):
     plt.title("Habilidades & Tecnologias (Superfície 3D)", color="#ff007c", fontdict={'fontsize': 18, 'fontweight': 'bold'}, pad=20)
     
     # Save the figure
-    plt.savefig('3d_surface_graph.png', 
+    plt.savefig('3d_surface_skills.png', 
                 dpi=300, 
                 bbox_inches='tight', 
                 facecolor=fig.get_facecolor(), 
                 edgecolor='none')
-    print("Successfully generated 3d_surface_graph.png")
+    print("Successfully generated 3d_surface_skills.png")
 
 if __name__ == "__main__":
     print("Fetching language data...")
