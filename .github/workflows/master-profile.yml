@@ -29,12 +29,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests numpy scipy matplotlib
           
-      - name: Generate Custom 3D Surface Graphs
+      - name: Generate Custom 3D Surface Graphs and Pie Chart
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python generate_3d_commits.py
           python generate_3d_skills.py
+          python generate_3d_pie.py
+          
+      - name: Inject 3D Pie into Dashboard
+        run: python inject_pie.py
         
       - name: Commit & Push
         run: |
@@ -43,5 +47,6 @@ jobs:
           git add profile-3d-contrib
           git add 3d_surface_commits.png
           git add 3d_surface_skills.png
-          git commit -m "data: generate unified 3D profile dashboard" || exit 0
+          git add 3d_pie_graph.png
+          git commit -m "data: generate unified 3D dashboard with pie and surfaces" || exit 0
           git push

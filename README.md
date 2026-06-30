@@ -43,8 +43,8 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
 ### 🌆 Gráfico de Commits 3D (Night Rainbow)
 
 <div align="center">
-  <!-- O Dashboard completo do plugin: Grade 3D, Radar e Gráfico de Pizza (Skills) -->
-  <img src="profile-3d-contrib/profile-night-rainbow.svg?v=3" alt="3D Profile Dashboard" width="800">
+  <!-- O Dashboard completo do plugin: Grade 3D, Radar e Gráfico de Pizza 3D (Substituído dinamicamente!) -->
+  <img src="profile-3d-contrib/profile-night-rainbow.svg?v=4" alt="3D Profile Dashboard" width="800">
 </div>
 
 ### 📈 Mapas de Atividade em Superfície 3D
