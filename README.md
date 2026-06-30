@@ -33,16 +33,18 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
   <img src="https://img.shields.io/badge/Microsoft_Certified_Azure_Data_Fundamentals-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure Data Fundamentals" />
 </div>
 
+### 🌅 Minhas Contribuições
+
+<div align="center">
+  <!-- A grade padrão de commits do GitHub com as cores do pôr do sol de Vice City e a famosa cobrinha! -->
+  <img src="github-snake.svg" alt="GitHub Commits" width="800">
+</div>
+
 ### 🌆 Gráfico de Superfície 3D (GTA VI Theme)
 
 <div align="center">
   <!-- O Gráfico 3D contínuo gerado pelo script Python de Data Engineering! -->
   <img src="3d_surface_graph.png" alt="3D Surface Profile" width="800">
-</div>
-
-<div align="center">
-  <!-- O Gráfico 3D nativo do plugin com cores lindas de Sunset/Neon! -->
-  <img src="profile-3d-contrib/profile-night-rainbow.svg" alt="3D Profile" width="800">
 </div>
 
 ---
