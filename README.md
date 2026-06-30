@@ -44,7 +44,7 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
 
 <div align="center">
   <!-- O Dashboard unificado: Grade 3D nativa + Radar + Gráfico de Superfície 3D Python customizado! -->
-  <img src="profile-3d-contrib/profile-night-rainbow.svg" alt="3D Profile Dashboard" width="800">
+  <img src="profile-3d-contrib/profile-night-rainbow.svg?v=2" alt="3D Profile Dashboard" width="800">
 </div>
 
 ---
