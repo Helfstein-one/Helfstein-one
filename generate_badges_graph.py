@@ -1,75 +1,87 @@
 import matplotlib.pyplot as plt
 import networkx as nx
+import requests
+from io import BytesIO
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 import numpy as np
 
 BACKGROUND_COLOR = "#0d1117"
-NEON_COLORS = ["#ff007c", "#ff7b00", "#ffea00", "#00e5ff", "#8a2be2"]
+
+def get_image(url):
+    try:
+        response = requests.get(url, timeout=5)
+        response.raise_for_status()
+        img = plt.imread(BytesIO(response.content), format='png')
+        return img
+    except Exception as e:
+        print(f"Error loading image from {url}: {e}")
+        return None
 
 def create_badges_graph():
     G = nx.Graph()
     
-    # Add nodes
-    G.add_node("Data Engineer", layer=0, size=3000, color="#ff007c")
+    # Central Node
+    G.add_node("Data Engineer", layer=0, size=3000, color="#ff007c", img=None)
     
-    # Level 1 nodes (Categories)
     categories = {"Cloud": "#00e5ff", "Data Science": "#ffea00", "Analytics": "#8a2be2"}
     for cat, color in categories.items():
-        G.add_node(cat, layer=1, size=2000, color=color)
+        G.add_node(cat, layer=1, size=2000, color=color, img=None)
         G.add_edge("Data Engineer", cat)
         
-    # Level 2 nodes (Badges)
     badges = {
-        "AWS Cloud\nPractitioner": "Cloud",
-        "Azure Data\nFundamentals": "Cloud",
-        "DataCamp\nCertified": "Data Science",
-        "IBM Advocate\nV2": "Analytics",
-        "Python / SQL": "Data Science",
-        "Apache Spark": "Data Science",
-        "Docker / Airflow": "Cloud"
+        "AWS Cloud\nPractitioner": ("Cloud", "http://aws.amazon.com"),
+        "Azure Data\nFundamentals": ("Cloud", "http://azure.microsoft.com"),
+        "DataCamp\nCertified": ("Data Science", "http://datacamp.com"),
+        "IBM Advocate\nV2": ("Analytics", "http://ibm.com"),
+        "Python / SQL": ("Data Science", "http://python.org"),
+        "Apache Spark": ("Data Science", "http://spark.apache.org"),
+        "Docker / Airflow": ("Cloud", "http://airflow.apache.org")
     }
     
-    for badge, parent in badges.items():
-        # Match color to parent
+    for badge, (parent, url) in badges.items():
+        favicon_url = f"https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url={url}&size=128"
         color = categories[parent]
-        G.add_node(badge, layer=2, size=1500, color=color)
+        G.add_node(badge, layer=2, size=1500, color=color, img_url=favicon_url)
         G.add_edge(parent, badge)
 
-    # Use a spring layout but customized
     pos = nx.spring_layout(G, seed=42, k=0.9, iterations=50)
     
-    # Adjust position for a bit more hierarchical look manually if needed, 
-    # but spring layout usually looks organic and nice.
-
     fig, ax = plt.subplots(figsize=(12, 8), facecolor=BACKGROUND_COLOR)
     ax.set_facecolor(BACKGROUND_COLOR)
     
-    # Draw edges with glow effect
+    # Edges
     for u, v in G.edges():
         x = [pos[u][0], pos[v][0]]
         y = [pos[u][1], pos[v][1]]
-        
-        # Base line
         ax.plot(x, y, color="#ffffff", alpha=0.3, linewidth=2, zorder=1)
-        # Glow
         ax.plot(x, y, color=G.nodes[v]['color'], alpha=0.1, linewidth=8, zorder=1)
 
-    # Draw nodes
+    # Nodes
     for node in G.nodes():
         x, y = pos[node]
         color = G.nodes[node]['color']
-        size = G.nodes[node]['size']
         
         # Node glow
-        ax.scatter(x, y, s=size*1.5, color=color, alpha=0.2, zorder=2)
-        # Node core
-        ax.scatter(x, y, s=size, color=BACKGROUND_COLOR, edgecolors=color, linewidths=3, zorder=3)
+        ax.scatter(x, y, s=G.nodes[node]['size']*1.5, color=color, alpha=0.2, zorder=2)
         
-        # Labels
-        # Central node slightly larger text
-        fontsize = 14 if G.nodes[node].get('layer') == 0 else 10
-        fontweight = 'bold' if G.nodes[node].get('layer') <= 1 else 'normal'
-        ax.text(x, y, node, color="#eeeeff", fontsize=fontsize, fontweight=fontweight, 
-                ha='center', va='center', zorder=4)
+        img_url = G.nodes[node].get('img_url')
+        if img_url:
+            img = get_image(img_url)
+            if img is not None:
+                imagebox = OffsetImage(img, zoom=0.5)
+                ab = AnnotationBbox(imagebox, (x, y), frameon=True, bboxprops=dict(edgecolor=color, linewidth=2, facecolor=BACKGROUND_COLOR, boxstyle="circle,pad=0.1"))
+                ax.add_artist(ab)
+                # Label below the image
+                ax.text(x, y - 0.08, node, color="#eeeeff", fontsize=10, ha='center', va='top', zorder=4)
+            else:
+                ax.scatter(x, y, s=G.nodes[node]['size'], color=BACKGROUND_COLOR, edgecolors=color, linewidths=3, zorder=3)
+                ax.text(x, y, node, color="#eeeeff", fontsize=10, ha='center', va='center', zorder=4)
+        else:
+            # Draw standard node
+            ax.scatter(x, y, s=G.nodes[node]['size'], color=BACKGROUND_COLOR, edgecolors=color, linewidths=3, zorder=3)
+            fontsize = 14 if G.nodes[node].get('layer') == 0 else 11
+            fontweight = 'bold'
+            ax.text(x, y, node, color="#eeeeff", fontsize=fontsize, fontweight=fontweight, ha='center', va='center', zorder=4)
 
     plt.title("Constelação de Credenciais & Skills", color="#ff007c", fontsize=20, fontweight='bold', pad=20)
     plt.axis('off')
