@@ -68,9 +68,7 @@ def create_badges_graph():
         if img_url:
             img = get_image(img_url)
             if img is not None:
-                # Draw the background circle
-                ax.scatter(x, y, s=G.nodes[node]['size'], color=BACKGROUND_COLOR, edgecolors=color, linewidths=3, zorder=3)
-                # Draw the image on top
+                # Draw the image on top (NO background circle)
                 imagebox = OffsetImage(img, zoom=0.3)
                 ab = AnnotationBbox(imagebox, (x, y), frameon=False, zorder=10)
                 ax.add_artist(ab)
@@ -86,7 +84,6 @@ def create_badges_graph():
             fontweight = 'bold'
             ax.text(x, y, node, color="#eeeeff", fontsize=fontsize, fontweight=fontweight, ha='center', va='center', zorder=11)
 
-    plt.title("Constelação de Credenciais & Skills", color="#ff007c", fontsize=20, fontweight='bold', pad=20)
     plt.axis('off')
     plt.tight_layout()
     plt.savefig('badges_graph.png', dpi=300, bbox_inches='tight', facecolor=fig.get_facecolor(), edgecolor='none')
