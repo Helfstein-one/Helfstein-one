@@ -38,7 +38,7 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
 ### 🕸️ Visão em Grafo (Constelação de Badges)
 
 <div align="center">
-  <img src="badges_graph.png" alt="Grafo de Credenciais" width="800">
+  <img src="badges_graph.png?v=2" alt="Grafo de Credenciais" width="800">
 </div>
 
 ### 🌅 Minhas Contribuições

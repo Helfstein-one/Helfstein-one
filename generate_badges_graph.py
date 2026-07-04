@@ -68,20 +68,23 @@ def create_badges_graph():
         if img_url:
             img = get_image(img_url)
             if img is not None:
-                imagebox = OffsetImage(img, zoom=0.5)
-                ab = AnnotationBbox(imagebox, (x, y), frameon=True, bboxprops=dict(edgecolor=color, linewidth=2, facecolor=BACKGROUND_COLOR, boxstyle="circle,pad=0.1"))
+                # Draw the background circle
+                ax.scatter(x, y, s=G.nodes[node]['size'], color=BACKGROUND_COLOR, edgecolors=color, linewidths=3, zorder=3)
+                # Draw the image on top
+                imagebox = OffsetImage(img, zoom=0.3)
+                ab = AnnotationBbox(imagebox, (x, y), frameon=False, zorder=10)
                 ax.add_artist(ab)
                 # Label below the image
-                ax.text(x, y - 0.08, node, color="#eeeeff", fontsize=10, ha='center', va='top', zorder=4)
+                ax.text(x, y - 0.08, node, color="#eeeeff", fontsize=10, ha='center', va='top', zorder=11)
             else:
                 ax.scatter(x, y, s=G.nodes[node]['size'], color=BACKGROUND_COLOR, edgecolors=color, linewidths=3, zorder=3)
-                ax.text(x, y, node, color="#eeeeff", fontsize=10, ha='center', va='center', zorder=4)
+                ax.text(x, y, node, color="#eeeeff", fontsize=10, ha='center', va='center', zorder=11)
         else:
             # Draw standard node
             ax.scatter(x, y, s=G.nodes[node]['size'], color=BACKGROUND_COLOR, edgecolors=color, linewidths=3, zorder=3)
             fontsize = 14 if G.nodes[node].get('layer') == 0 else 11
             fontweight = 'bold'
-            ax.text(x, y, node, color="#eeeeff", fontsize=fontsize, fontweight=fontweight, ha='center', va='center', zorder=4)
+            ax.text(x, y, node, color="#eeeeff", fontsize=fontsize, fontweight=fontweight, ha='center', va='center', zorder=11)
 
     plt.title("Constelação de Credenciais & Skills", color="#ff007c", fontsize=20, fontweight='bold', pad=20)
     plt.axis('off')
