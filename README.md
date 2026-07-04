@@ -31,6 +31,27 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
 <div align="center">
   <img src="https://img.shields.io/badge/AWS_Certified_Cloud_Practitioner-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS Cloud Practitioner" />
   <img src="https://img.shields.io/badge/Microsoft_Certified_Azure_Data_Fundamentals-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure Data Fundamentals" />
+  <img src="https://img.shields.io/badge/IBM_Advocate_V2-052FAD?style=for-the-badge&logo=ibm&logoColor=white" alt="IBM Advocate v2" />
+  <img src="https://img.shields.io/badge/DataCamp_Certified-03E812?style=for-the-badge&logo=datacamp&logoColor=white" alt="DataCamp" />
+</div>
+
+### 🏆 Badges & Credenciais (Link Tree)
+
+<div align="center">
+  <a href="https://www.linkedin.com/in/mauricio-helfstein/details/certifications/">
+    <img src="https://img.shields.io/badge/🔗_Ver_todas_as_minhas_Credenciais_no_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Certifications" />
+  </a>
+  <br><br>
+  <!-- Link Tree -->
+  <a href="https://www.credly.com/users/mauricio-helfstein/badges">
+    <img src="https://img.shields.io/badge/AWS_Badges-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS Badges" />
+  </a>
+  <a href="https://www.credly.com/users/mauricio-helfstein/badges">
+    <img src="https://img.shields.io/badge/IBM_Badges-052FAD?style=for-the-badge&logo=ibm&logoColor=white" alt="IBM Badges" />
+  </a>
+  <a href="https://www.linkedin.com/in/mauricio-helfstein/details/certifications/">
+    <img src="https://img.shields.io/badge/DataCamp_Badges-03E812?style=for-the-badge&logo=datacamp&logoColor=white" alt="DataCamp Badges" />
+  </a>
 </div>
 
 ### 🌅 Minhas Contribuições
