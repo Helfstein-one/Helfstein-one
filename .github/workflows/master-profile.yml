@@ -27,15 +27,16 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests numpy scipy matplotlib
+          pip install requests numpy scipy matplotlib networkx
           
-      - name: Generate Custom 3D Surface Graphs and Pie Chart
+      - name: Generate Custom 3D Surface Graphs, Pie Chart and Badges Graph
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python generate_3d_commits.py
           python generate_3d_skills.py
           python generate_3d_pie.py
+          python generate_badges_graph.py
           
       - name: Inject 3D Pie into Dashboard
         run: python inject_pie.py
@@ -48,6 +49,7 @@ jobs:
           git add 3d_surface_commits.png
           git add 3d_surface_skills.png
           git add 3d_pie_graph.png
+          git add badges_graph.png
           git add profile-3d-contrib/profile-dashboard-injected.svg
-          git commit -m "data: generate unified 3D dashboard with pie and surfaces" || exit 0
+          git commit -m "data: generate unified 3D dashboard with pie, surfaces and badges graph" || exit 0
           git push
