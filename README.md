@@ -25,12 +25,6 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
   <img src="https://img.shields.io/badge/Airflow-0d1117?style=for-the-badge&logo=apacheairflow&logoColor=00e5ff&color=ff007c" alt="Airflow" />
 </div>
 
-### 🖥️ Anatomia dos Repositórios: MAURICE Workstation & MCP Terminal
-
-<div align="center">
-  <img src="anatomy_workstation.svg" alt="MAURICE AI & Lakehouse Anatomy Workstation" width="100%">
-</div>
-
 
 ### 📜 Certificações
 
@@ -45,6 +39,15 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
 
 <div align="center">
   <img src="badges_graph.png?v=3" alt="Grafo de Credenciais" width="800">
+</div>
+
+### 🎛️ Bancada de Precisão de Dados: Dial Indicator (Anatomy Benchmark)
+
+<div align="center">
+  <a href="dial_indicator.html" title="Clique para abrir a bancada 100% interativa com controle de mouse e teclado">
+    <img src="dial_indicator.svg" alt="Bancada de Precisão Dial Indicator - Anatomy Benchmark" width="100%">
+  </a>
+  <p><i>💡 <b>Animação contínua via motor isométrico Anatomy</b>. Clique na imagem para abrir a bancada interativa no navegador (arraste com o mouse e controle os blocos pelas setas do teclado).</i></p>
 </div>
 
 ### 🌅 Minhas Contribuições
