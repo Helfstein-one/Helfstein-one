@@ -41,15 +41,6 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
   <img src="badges_graph.png?v=3" alt="Grafo de Credenciais" width="800">
 </div>
 
-### 🎛️ Bancada de Precisão de Dados: Dial Indicator (Anatomy Benchmark)
-
-<div align="center">
-  <a href="dial_indicator.html" title="Clique para abrir a bancada 100% interativa com controle de mouse e teclado">
-    <img src="dial_indicator.svg" alt="Bancada de Precisão Dial Indicator - Anatomy Benchmark" width="100%">
-  </a>
-  <p><i>💡 <b>Animação contínua via motor isométrico Anatomy</b>. Clique na imagem para abrir a bancada interativa no navegador (arraste com o mouse e controle os blocos pelas setas do teclado).</i></p>
-</div>
-
 ### 🌅 Minhas Contribuições
 
 <div align="center">
