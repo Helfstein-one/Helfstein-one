@@ -25,10 +25,10 @@ Sou um **Data Engineer** apaixonado por tecnologia e dados. Foco em arquitetar s
   <img src="https://img.shields.io/badge/Airflow-0d1117?style=for-the-badge&logo=apacheairflow&logoColor=00e5ff&color=ff007c" alt="Airflow" />
 </div>
 
-### 🛰️ Anatomia do Stack: Ônibus Espacial Buran (Буран)
+### 🖥️ Anatomia dos Repositórios: MAURICE Workstation & MCP Terminal
 
 <div align="center">
-  <img src="buran_anatomy.svg" alt="Soviet Buran Shuttle - Skill Anatomy Blueprint" width="100%">
+  <img src="anatomy_workstation.svg" alt="MAURICE AI & Lakehouse Anatomy Workstation" width="100%">
 </div>
 
 
